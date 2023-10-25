@@ -1,0 +1,17 @@
+datasource db {
+    url = env("DATABASE_URL")
+    provider = "postgresql"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+
+model Language {
+    id   String @map("id")    @db.Uuid       @default(uuid())
+    title String @map("title") @db.VarChar(3) @default("uz")
+
+    @@id([ id ])
+    @@map("language")
+}
